@@ -47,5 +47,5 @@ jobs:
           WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
           MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          content="图标更新到$VERSION啦！\n$MESSAGE"
+          content="图标更新到$VERSION啦！\n 新增了:$MESSAGE"
           curl -H "Content-Type: application/json" -X POST -d "{\"msgtype\": \"text\", \"text\": {\"content\": \"$content\"}}" $WEBHOOK_TOKEN
