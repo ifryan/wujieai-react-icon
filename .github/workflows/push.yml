@@ -40,13 +40,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Get version from package.json
         run: |
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=$(node -p "require('../../package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Dingtalk WebHook
-      env:
-        WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
-        MESSAGE: ${{ github.event.head_commit.message }}
-      run: |
-        content="图标更新到$VERSION啦！\n$MESSAGE"
-        curl -H "Content-Type: application/json" -X POST -d "{\"msgtype\": \"text\", \"text\": {\"content\": \"$content\"}}" $WEBHOOK_TOKEN
-
+        env:
+          WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
+          MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          content="图标更新到$VERSION啦！\n$MESSAGE"
+          curl -H "Content-Type: application/json" -X POST -d "{\"msgtype\": \"text\", \"text\": {\"content\": \"$content\"}}" $WEBHOOK_TOKEN
