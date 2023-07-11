@@ -7,6 +7,4 @@
   }
 
   type Icon = ComponentType<Props>;
-  export const Qq: Icon;
-export const Test: Icon;
-export const FileError: Icon;
+  
