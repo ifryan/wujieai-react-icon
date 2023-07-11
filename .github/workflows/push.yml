@@ -40,7 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Get version from package.json
         run: |
-          VERSION=$(node -p "require('../../package.json').version")
+          VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Dingtalk WebHook
         env:
