@@ -7,4 +7,4 @@
   }
 
   type Icon = ComponentType<Props>;
-  
+  export const MagicDice: Icon;
