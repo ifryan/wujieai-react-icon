@@ -88,7 +88,7 @@ const generateIconCode = async ({name}) => {
 
 // append export code to icons.js
 const appendToIconsIndex = ({ComponentName, name}) => {
-  const exportString = `export { default as ${ComponentName} } from './icons/${name}';\r\n`;
+  const exportString = `export { ${ComponentName} } from './icons/${name}';\r\n`;
   fs.appendFileSync(
     path.join(rootDir, 'src', 'icons.js'),
     exportString,
