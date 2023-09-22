@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MagicDice = props => {
+export const MagicDice = props => {
   const { color, size, ...otherProps } = props;
   return (
     <svg
@@ -40,5 +40,3 @@ MagicDice.defaultProps = {
   color: 'currentColor',
   size: '24'
 };
-
-export default MagicDice;
