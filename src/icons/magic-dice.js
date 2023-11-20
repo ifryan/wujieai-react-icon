@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-export const MagicDice = props => {
-  const { color, size, ...otherProps } = props;
+export const MagicDice = (props) => {
+  const { color = "currentColor", size = "24", ...otherProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,14 +28,4 @@ export const MagicDice = props => {
       ></path>
     </svg>
   );
-};
-
-MagicDice.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-};
-
-MagicDice.defaultProps = {
-  color: 'currentColor',
-  size: '24'
 };
