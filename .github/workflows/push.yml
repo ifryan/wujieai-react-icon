@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "10.x"
+      - run: echo registry=https://registry.npmmirror.com/ >~/.npmrc
+      - run: cat ~/.npmrc
       - run: yarn install
       - name: Figma Action
         uses: primer/figma-action@v1.0.0-alpha.2
