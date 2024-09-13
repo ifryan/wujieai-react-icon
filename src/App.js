@@ -24,12 +24,19 @@ class List extends React.Component {
         <Header />
         <Container>
           {Object.keys(icons).map((key, index) => {
+            console.log(key);
             const Icon = icons[key];
             return (
               <li key={index}>
                 <IconWrapper>
                   <Icon />
-                  <span onDoubleClick={() => handleCopyIcon(`<${key} />`)}>
+                  <span
+                    onDoubleClick={() => handleCopyIcon(`<${key} />`)}
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      handleCopyIcon(`<Taro${key} />`);
+                    }}
+                  >
                     {key}
                   </span>
                 </IconWrapper>

@@ -16,7 +16,7 @@ const Header = styled.header`
 export default () => (
   <Header>
     <h1>
-      无界AI Icons<span>(双击名称复制组件)</span>
+      无界AI Icons<span>(双击名称复制组件/右键复制小程序组件)</span>
     </h1>
     <div>当前版本：{version}</div>
   </Header>
