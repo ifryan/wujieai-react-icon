@@ -6,7 +6,7 @@ const format = require("prettier-eslint");
 const processSvg = require("./processSvg");
 const { parseName, svgToBase64 } = require("./utils");
 const defaultStyle = process.env.npm_package_config_style || "stroke";
-const { getAttrs, getElementCode } = require("./template");
+const { getAttrs, getElementCode, getTaroElementCode } = require("./template");
 const icons = require("../src/data.json");
 
 const rootDir = path.join(__dirname, "..");
@@ -63,9 +63,14 @@ const attrsToString = (attrs, style) => {
 // generate icon code separately
 const generateIconCode = async ({ name }) => {
   const names = parseName(name, defaultStyle);
-  console.log(names);
+  console.log(names, 1);
   const location = path.join(rootDir, "src/svg", `${names.name}.svg`);
   const destination = path.join(rootDir, "src/icons", `${names.name}.js`);
+  const taroDestination = path.join(
+    rootDir,
+    "src/icons",
+    `taro-${names.name}.js`
+  );
   const code = fs.readFileSync(location);
   const svgCode = await processSvg(code);
   const { xmlns, width, height, viewBox } = getAttrs(names.style);
@@ -76,8 +81,7 @@ const generateIconCode = async ({ name }) => {
   const element = getElementCode(
     ComponentName,
     attrsToString(getAttrs(names.style), names.style),
-    svgCode,
-    base64Image
+    svgCode
   );
   const component = format({
     text: element,
@@ -90,23 +94,41 @@ const generateIconCode = async ({ name }) => {
       parser: "flow",
     },
   });
+  const taroElement = getTaroElementCode(`${ComponentName}`, base64Image);
+  const taroComponent = format({
+    text: taroElement,
+    eslintConfig: {
+      extends: "airbnb",
+    },
+    prettierOptions: {
+      bracketSpacing: true,
+      singleQuote: true,
+      parser: "flow",
+    },
+  });
 
   fs.writeFileSync(destination, component, "utf-8");
+  fs.writeFileSync(taroDestination, taroComponent, "utf-8");
 
   console.log("Successfully built", ComponentName);
-  return { ComponentName, name: names.name };
+  console.log("Successfully built", `Taro${ComponentName}`);
+  return {
+    ComponentName,
+    name: names.name,
+  };
 };
 
 // append export code to icons.js
 const appendToIconsIndex = ({ ComponentName, name }) => {
-  const exportString = `export { ${ComponentName} } from './icons/${name}';\r\n`;
+  console.log(ComponentName, name, 2);
+  const exportString = `export { ${ComponentName} } from './icons/${name}';\r\nexport { Taro${ComponentName} } from './icons/taro-${name}';\r\n`;
   fs.appendFileSync(
     path.join(rootDir, "src", "icons.js"),
     exportString,
     "utf-8"
   );
 
-  const exportTypeString = `export const ${ComponentName}: Icon;\n`;
+  const exportTypeString = `export const ${ComponentName}: Icon;\n  export const Taro${ComponentName}: Icon;\n`;
   fs.appendFileSync(
     path.join(rootDir, "src", "icons.d.ts"),
     exportTypeString,

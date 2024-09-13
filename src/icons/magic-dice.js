@@ -1,6 +1,6 @@
-import React from "react";
-export const MagicDice = (props) => {
-  const { color = "currentColor", size = "24", ...otherProps } = props;
+import React from 'react';
+export const MagicDice = props => {
+  const { color = 'currentColor', size = '24', ...otherProps } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -26,24 +26,5 @@ export const MagicDice = (props) => {
         d="M22.038 8.786l-8.06 1.203-3.12 11.154 7.752-2.118 3.428-10.24zm-1.849 1.495a.558.558 0 01.512.276c.134.217.165.539.088.894a2.362 2.362 0 01-.5 1.002c-.243.285-.529.473-.795.521-.266.049-.49-.046-.624-.263-.134-.217-.165-.539-.088-.894.077-.356.257-.716.5-1.002.138-.162.29-.294.448-.387a.978.978 0 01.46-.147zm-4.58.711a.558.558 0 01.512.276c.134.217.165.538.088.894a2.361 2.361 0 01-.5 1.001c-.242.286-.528.474-.795.522-.266.049-.49-.046-.624-.263-.133-.217-.165-.539-.088-.894.077-.356.257-.716.5-1.002.138-.162.291-.294.448-.387a.976.976 0 01.46-.147zm2.553 4.945a.558.558 0 01.511.276c.134.217.165.539.088.894a2.361 2.361 0 01-.5 1.002c-.242.285-.528.473-.794.521-.266.049-.491-.046-.625-.263-.133-.217-.165-.539-.088-.894a2.36 2.36 0 01.5-1.002c.138-.162.291-.294.448-.387a.977.977 0 01.46-.146zm-4.69 1.3a.558.558 0 01.512.275c.134.217.165.539.088.895a2.361 2.361 0 01-.5 1c-.12.142-.252.261-.388.35-.136.09-.275.149-.406.173a.566.566 0 01-.624-.264c-.134-.217-.166-.539-.089-.894.078-.356.257-.716.5-1.002.138-.162.291-.294.449-.386a.977.977 0 01.459-.147z"
       ></path>
     </svg>
-  );
-};
-export const TaroMagicDice = async (props) => {
-  const { color = "currentColor", size = "24", ...otherProps } = props;
-  return (
-    <View>
-      <Text
-        style={{
-          backgroundColor: color,
-          mask:
-            "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB2klEQVR4nM3UjU3bQBiH8f9NgDNBrxMQJiCdgGQDZwKUCepuYCaomaDpBL1OQDIBlwnwBulzfWNycW1SkJB4pJ8I/roPcJzeuQ87QIEWZ3tpgDlu4GV5ma5K0h1ajObQr5R0gXRzJekr8naIkq4RJS0RNJJDvzVuECQt4GXHPiGVPi9RIMiOr5GOtTjJod8TCqRaLBFkq7lFV5TkdSxdW8lW/pxD3hQP6NdIWmEm+3yBsb6h0iGHvEr/7nlXlK1mg0a2yiCb+eagRcrLrpdDXpD98fr9hJd0iRVqFEi/e5mZ7NgUW6SfcsjbY6gJCjziDo2Gt/IeUbaSGicDzPEDQ3XX7bGAl12fBNlKdvCylUQZOXTVCLITD8hbYYNfmKDR8fpHeNn5L6hR6pBDV3roFVIbXKLfb8xkK6lk+zxH3go1/ubQFWQn1nhCgX7p5qjxrUx9RtQhh7wa15hiqCuUOn3h8rY4ubc/QKrS8Luwg9dxz/MWSHnZJJ9zGKqU9B1596hkW1jpuE1bTFHKtjkqy2GsdFPQ8WthiVSQPWSPVJTNeoGZejm81BSN7D9qgkY2+1uUsm0LslUF2Qt2ksO5CtQoZbPdIMgeGnWm/xmgq0CLV/WaAd7Uuw/wB/Iybxln4fxcAAAAAElFTkSuQmCC') 0 0/100% 100% no-repeat",
-          WebkitMask:
-            "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB2klEQVR4nM3UjU3bQBiH8f9NgDNBrxMQJiCdgGQDZwKUCepuYCaomaDpBL1OQDIBlwnwBulzfWNycW1SkJB4pJ8I/roPcJzeuQ87QIEWZ3tpgDlu4GV5ma5K0h1ajObQr5R0gXRzJekr8naIkq4RJS0RNJJDvzVuECQt4GXHPiGVPi9RIMiOr5GOtTjJod8TCqRaLBFkq7lFV5TkdSxdW8lW/pxD3hQP6NdIWmEm+3yBsb6h0iGHvEr/7nlXlK1mg0a2yiCb+eagRcrLrpdDXpD98fr9hJd0iRVqFEi/e5mZ7NgUW6SfcsjbY6gJCjziDo2Gt/IeUbaSGicDzPEDQ3XX7bGAl12fBNlKdvCylUQZOXTVCLITD8hbYYNfmKDR8fpHeNn5L6hR6pBDV3roFVIbXKLfb8xkK6lk+zxH3go1/ubQFWQn1nhCgX7p5qjxrUx9RtQhh7wa15hiqCuUOn3h8rY4ubc/QKrS8Luwg9dxz/MWSHnZJJ9zGKqU9B1596hkW1jpuE1bTFHKtjkqy2GsdFPQ8WthiVSQPWSPVJTNeoGZejm81BSN7D9qgkY2+1uUsm0LslUF2Qt2ksO5CtQoZbPdIMgeGnWm/xmgq0CLV/WaAd7Uuw/wB/Iybxln4fxcAAAAAElFTkSuQmCC') 0 0/100% 100% no-repeat",
-          width: size,
-          height: size,
-          display: "inline-block",
-        }}
-      />
-    </View>
   );
 };

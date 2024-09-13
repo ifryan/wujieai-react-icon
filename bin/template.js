@@ -26,7 +26,7 @@ const getAttrs = (style) => {
   );
 };
 
-const getElementCode = (ComponentName, attrs, svgCode, base64Image) => `
+const getElementCode = (ComponentName, attrs, svgCode) => `
   import React from 'react';
   export const ${ComponentName} = (props) => {
     const { color="currentColor", size="24", ...otherProps } = props;
@@ -36,7 +36,13 @@ const getElementCode = (ComponentName, attrs, svgCode, base64Image) => `
       </svg>
     )
   };
-  export const Taro${ComponentName} = async (props) => {
+`;
+
+const getTaroElementCode = (ComponentName, base64Image) => `
+  import React from 'react';
+  import { View, Text } from '@tarojs/components'
+
+  export const Taro${ComponentName} = (props) => {
     const { color="currentColor", size="24", ...otherProps } = props;
     return (
       <View>
@@ -55,4 +61,4 @@ const getElementCode = (ComponentName, attrs, svgCode, base64Image) => `
   };
 `;
 
-module.exports = { getAttrs, getElementCode };
+module.exports = { getAttrs, getElementCode, getTaroElementCode };

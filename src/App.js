@@ -23,26 +23,27 @@ class List extends React.Component {
       <div>
         <Header />
         <Container>
-          {Object.keys(icons).map((key, index) => {
-            console.log(key);
-            const Icon = icons[key];
-            return (
-              <li key={index}>
-                <IconWrapper>
-                  <Icon />
-                  <span
-                    onDoubleClick={() => handleCopyIcon(`<${key} />`)}
-                    onContextMenu={(e) => {
-                      e.preventDefault();
-                      handleCopyIcon(`<Taro${key} />`);
-                    }}
-                  >
-                    {key}
-                  </span>
-                </IconWrapper>
-              </li>
-            );
-          })}
+          {Object.keys(icons)
+            .filter((it) => !it.startsWith("Taro"))
+            .map((key, index) => {
+              const Icon = icons[key];
+              return (
+                <li key={index}>
+                  <IconWrapper>
+                    <Icon />
+                    <span
+                      onDoubleClick={() => handleCopyIcon(`<${key} />`)}
+                      onContextMenu={(e) => {
+                        e.preventDefault();
+                        handleCopyIcon(`<Taro${key} />`);
+                      }}
+                    >
+                      {key}
+                    </span>
+                  </IconWrapper>
+                </li>
+              );
+            })}
         </Container>
       </div>
     );
