@@ -1,1 +1,1 @@
-export { MagicDice } from "./icons/magic-dice";
+export { MagicDice } from './icons/magic-dice';

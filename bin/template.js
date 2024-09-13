@@ -1,3 +1,5 @@
+const { svgToBase64 } = require("./utils");
+
 const getAttrs = (style) => {
   const baseAttrs = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -24,7 +26,7 @@ const getAttrs = (style) => {
   );
 };
 
-const getElementCode = (ComponentName, attrs, svgCode) => `
+const getElementCode = (ComponentName, attrs, svgCode, base64Image) => `
   import React from 'react';
   export const ${ComponentName} = (props) => {
     const { color="currentColor", size="24", ...otherProps } = props;
@@ -32,6 +34,23 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
       <svg ${attrs}>
         ${svgCode}
       </svg>
+    )
+  };
+  export const Taro${ComponentName} = async (props) => {
+    const { color="currentColor", size="24", ...otherProps } = props;
+    return (
+      <View>
+        <Text
+          style={{
+            backgroundColor: color,
+            mask: "url('${base64Image}') 0 0/100% 100% no-repeat",
+            WebkitMask: "url('${base64Image}') 0 0/100% 100% no-repeat",
+            width: size,
+            height: size,
+            display: "inline-block",
+          }}
+        />
+      </View>
     )
   };
 `;
