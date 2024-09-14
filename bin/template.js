@@ -29,7 +29,7 @@ const getAttrs = (style) => {
 const getElementCode = (ComponentName, attrs, svgCode) => `
   import React from 'react';
   export const ${ComponentName} = (props) => {
-    const { color="currentColor", size="24", ...otherProps } = props;
+    const { color="currentColor", size=24, ...otherProps } = props;
     return (
       <svg ${attrs}>
         ${svgCode}
@@ -41,9 +41,10 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
 const getTaroElementCode = (ComponentName, base64Image) => `
   import React from 'react';
   import { View, Text } from '@tarojs/components'
+  import Taro from '@tarojs/taro'
 
   export const ${ComponentName} = (props) => {
-    const { color="currentColor", size="24", ...otherProps } = props;
+    const { color="currentColor", size=24, ...otherProps } = props;
    
     return (
       <View>
@@ -53,8 +54,8 @@ const getTaroElementCode = (ComponentName, base64Image) => `
             mask: "url('${base64Image}') 0 0/100% 100% no-repeat",
             WebkitMask: "url('${base64Image}') 0 0/100% 100% no-repeat",
             '-webkit-mask': "url('${base64Image}') 0 0/100% 100% no-repeat",
-            width: size,
-            height: size,
+            width: Taro.pxTransform(size),
+            height: Taro.pxTransform(size),
             display: "inline-block",
           }}
         />
