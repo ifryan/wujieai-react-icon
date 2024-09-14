@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
 
-export const TaroMagicDice = props => {
+export const MagicDice = props => {
   const { color = 'currentColor', size = '24', ...otherProps } = props;
   return (
     <View>

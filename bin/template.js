@@ -42,7 +42,7 @@ const getTaroElementCode = (ComponentName, base64Image) => `
   import React from 'react';
   import { View, Text } from '@tarojs/components'
 
-  export const Taro${ComponentName} = (props) => {
+  export const ${ComponentName} = (props) => {
     const { color="currentColor", size="24", ...otherProps } = props;
     return (
       <View>
