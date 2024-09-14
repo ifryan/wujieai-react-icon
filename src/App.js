@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as icons from "./icons";
+import * as icons from "./react-icons";
 import Header from "./components/Header";
 import IconWrapper from "./components/IconWrapper";
 
