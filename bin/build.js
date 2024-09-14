@@ -13,7 +13,7 @@ const rootDir = path.join(__dirname, "..");
 
 // where icons code in
 const srcDir = path.join(rootDir, "src");
-const iconsDir = path.join(rootDir, "src/icons");
+const iconsDir = path.join(rootDir, "src/react-icons");
 const iconsTaroDir = path.join(rootDir, "src/taro-icons");
 
 // generate icons.js and icons.d.ts file
@@ -36,9 +36,13 @@ const generateIconsIndex = () => {
   type Icon = ComponentType<Props>;
   `;
 
-  fs.writeFileSync(path.join(rootDir, "src", "icons.js"), "", "utf-8");
   fs.writeFileSync(
-    path.join(rootDir, "src", "icons.d.ts"),
+    path.join(rootDir, "src/react-icons", "index.js"),
+    "",
+    "utf-8"
+  );
+  fs.writeFileSync(
+    path.join(rootDir, "src/react-icons", "index.d.ts"),
     initialTypeDefinitions,
     "utf-8"
   );
@@ -62,9 +66,13 @@ const generateTaroIconsIndex = () => {
   type Icon = ComponentType<Props>;
   `;
 
-  fs.writeFileSync(path.join(rootDir, "src", "taro-icons.js"), "", "utf-8");
   fs.writeFileSync(
-    path.join(rootDir, "src", "taro-icons.d.ts"),
+    path.join(rootDir, "src/taro-icons", "index.js"),
+    "",
+    "utf-8"
+  );
+  fs.writeFileSync(
+    path.join(rootDir, "src/taro-icons", "index.d.ts"),
     initialTypeDefinitions,
     "utf-8"
   );
@@ -91,7 +99,7 @@ const attrsToString = (attrs, style) => {
 const generateIconCode = async ({ name }) => {
   const names = parseName(name, defaultStyle);
   const location = path.join(rootDir, "src/svg", `${names.name}.svg`);
-  const destination = path.join(rootDir, "src/icons", `${names.name}.js`);
+  const destination = path.join(rootDir, "src/react-icons", `${names.name}.js`);
 
   const code = fs.readFileSync(location);
   const svgCode = await processSvg(code);
@@ -157,31 +165,31 @@ const generateTaroIconCode = async ({ name }) => {
 };
 // append export code to icons.js
 const appendToIconsIndex = ({ ComponentName, name }) => {
-  const exportString = `export { ${ComponentName} } from './icons/${name}';\r\n`;
+  const exportString = `export { ${ComponentName} } from './${name}';\r\n`;
   fs.appendFileSync(
-    path.join(rootDir, "src", "icons.js"),
+    path.join(rootDir, "src/react-icons", "index.js"),
     exportString,
     "utf-8"
   );
 
   const exportTypeString = `export const ${ComponentName}: Icon;\n`;
   fs.appendFileSync(
-    path.join(rootDir, "src", "icons.d.ts"),
+    path.join(rootDir, "src/react-icons", "index.d.ts"),
     exportTypeString,
     "utf-8"
   );
 };
 const appendToTaroIconsIndex = ({ ComponentName, name }) => {
-  const exportString = `export { ${ComponentName} } from './taro-icons/${name}';\r\n`;
+  const exportString = `export { ${ComponentName} } from './${name}';\r\n`;
   fs.appendFileSync(
-    path.join(rootDir, "src", "taro-icons.js"),
+    path.join(rootDir, "src/taro-icons", "index.js"),
     exportString,
     "utf-8"
   );
 
   const exportTypeString = `export const ${ComponentName}: Icon;\n  export const Taro${ComponentName}: Icon;\n`;
   fs.appendFileSync(
-    path.join(rootDir, "src", "taro-icons.d.ts"),
+    path.join(rootDir, "src/taro-icons", "index.d.ts"),
     exportTypeString,
     "utf-8"
   );

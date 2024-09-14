@@ -26,7 +26,7 @@
   "homepage": "https://github.com/leadream/juuust-react-icon#readme",
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
-    "generate": "sudo rm -rf src/icons && sudo rm -rf src/taro-icons && node bin/build.js",
+    "generate": "sudo rm -rf src/react-icons && sudo rm -rf src/taro-icons && node bin/build.js",
     "dev": "rollup -w -c ./build/rollup.config.dev.js",
     "build": "rollup -c ./build/rollup.config.prod.js",
     "build:bundle:react": "rollup -c ./build/rollup.config.react.bundle.js",

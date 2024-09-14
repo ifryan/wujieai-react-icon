@@ -8,13 +8,23 @@ const resolveFile = function(filePath) {
 };
 
 export default {
-  input: "src/taro-icons.js",
+  // input: "src/taro-icons.js",
+  input: "src/taro-icons/index.js",
   output: [{ file: pkg.taro, format: "cjs" }],
-  external: ["@tarojs/components"],
+  external: ["@tarojs/components", "@tarojs/taro"],
   plugins: [
     copy({
+      // targets: [
+      //   {
+      //     src: resolveFile("src/taro-icons.d.ts"),
+      //     dest: resolveFile("dist/taro.d.ts"),
+      //   },
+      // ],
       targets: [
-        { src: resolveFile("src/taro-icons.d.ts"), dest: resolveFile("dist/") },
+        {
+          src: resolveFile("src/taro-icons/index.d.ts"),
+          dest: resolveFile("dist/taro.d.ts"),
+        },
       ],
     }),
     babel({

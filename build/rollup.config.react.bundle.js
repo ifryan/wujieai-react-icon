@@ -8,7 +8,8 @@ const resolveFile = function(filePath) {
 };
 
 export default {
-  input: "src/icons.js",
+  // input: "src/icons.js",
+  input: "src/react-icons/index.js",
   output: [
     { file: pkg.main, format: "cjs" },
     { file: pkg.module, format: "es" },
@@ -16,8 +17,14 @@ export default {
   external: ["react", "prop-types"],
   plugins: [
     copy({
+      // targets: [
+      //   { src: resolveFile("src/icons.d.ts"), dest: resolveFile("dist/") },
+      // ],
       targets: [
-        { src: resolveFile("src/icons.d.ts"), dest: resolveFile("dist/") },
+        {
+          src: resolveFile("src/react-icons/index.d.ts"),
+          dest: resolveFile("dist/"),
+        },
       ],
     }),
     babel({
