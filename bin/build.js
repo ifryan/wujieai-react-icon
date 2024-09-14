@@ -180,7 +180,7 @@ const appendToTaroIconsIndex = ({ ComponentName, name }) => {
     "utf-8"
   );
 
-  const exportTypeString = `export const ${ComponentName}: Icon;\n`;
+  const exportTypeString = `export const ${ComponentName}: Icon;\n  export const Taro${ComponentName}: Icon;\n`;
   fs.appendFileSync(
     path.join(rootDir, "src", "taro-icons.d.ts"),
     exportTypeString,
