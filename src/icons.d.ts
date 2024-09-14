@@ -8,4 +8,3 @@
 
   type Icon = ComponentType<Props>;
   export const MagicDice: Icon;
-  export const TaroMagicDice: Icon;

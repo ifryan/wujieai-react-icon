@@ -189,7 +189,7 @@ const appendToTaroIconsIndex = ({ ComponentName, name }) => {
 };
 
 generateIconsIndex();
-generateTaroIconsIndex();
+// generateTaroIconsIndex();
 
 Object.keys(icons)
   .map((key) => icons[key])
@@ -197,7 +197,7 @@ Object.keys(icons)
     generateIconCode({ name }).then(({ ComponentName, name }) => {
       appendToIconsIndex({ ComponentName, name });
     });
-    generateTaroIconCode({ name }).then(({ ComponentName, name }) => {
-      appendToTaroIconsIndex({ ComponentName, name });
-    });
+    // generateTaroIconCode({ name }).then(({ ComponentName, name }) => {
+    //   appendToTaroIconsIndex({ ComponentName, name });
+    // });
   });

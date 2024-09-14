@@ -8,21 +8,11 @@ const resolveFile = function(filePath) {
 };
 
 export default {
-  input: ["src/icons.js", "src/taro-icons.js"],
-  output: {
-    dir: pkg.distDir || "dist",
-    format: "es",
-    entryFileNames: "[name].js",
-    chunkFileNames: "[name]-[hash].js",
-    assetFileNames: "[name]-[hash][extname]",
-    sourcemap: true,
-    // 为不同的输入文件设置不同的库名称
-    globals: {
-      "src/icons.js": "wujieai-react-icon",
-      "src/taro-icons.js": "wujieai-taro-icon",
-    },
-    exports: "named",
-  },
+  input: "src/icons.js",
+  output: [
+    { file: pkg.main, format: "cjs" },
+    { file: pkg.module, format: "es" },
+  ],
   external: ["react", "prop-types"],
   plugins: [
     copy({
