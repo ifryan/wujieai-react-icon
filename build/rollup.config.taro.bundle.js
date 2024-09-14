@@ -11,7 +11,7 @@ export default {
   // input: "src/taro-icons.js",
   input: "src/taro-icons/index.js",
   output: [{ file: pkg.taro, format: "cjs" }],
-  external: ["@tarojs/components", "@tarojs/taro"],
+  external: ["@tarojs/components"],
   plugins: [
     copy({
       // targets: [
