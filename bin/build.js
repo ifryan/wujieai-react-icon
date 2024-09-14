@@ -172,7 +172,6 @@ const appendToIconsIndex = ({ ComponentName, name }) => {
   );
 };
 const appendToTaroIconsIndex = ({ ComponentName, name }) => {
-  console.log(ComponentName, name, 2);
   const exportString = `export { ${ComponentName} } from './taro-icons/${name}';\r\n`;
   fs.appendFileSync(
     path.join(rootDir, "src", "taro-icons.js"),
@@ -189,7 +188,7 @@ const appendToTaroIconsIndex = ({ ComponentName, name }) => {
 };
 
 generateIconsIndex();
-// generateTaroIconsIndex();
+generateTaroIconsIndex();
 
 Object.keys(icons)
   .map((key) => icons[key])
@@ -197,7 +196,7 @@ Object.keys(icons)
     generateIconCode({ name }).then(({ ComponentName, name }) => {
       appendToIconsIndex({ ComponentName, name });
     });
-    // generateTaroIconCode({ name }).then(({ ComponentName, name }) => {
-    //   appendToTaroIconsIndex({ ComponentName, name });
-    // });
+    generateTaroIconCode({ name }).then(({ ComponentName, name }) => {
+      appendToTaroIconsIndex({ ComponentName, name });
+    });
   });

@@ -2,9 +2,10 @@
   "name": "wujieai-react-icon",
   "version": "2.1.0",
   "description": "Icon automation workflow with Figma",
-  "main": "dist/juuust-react-icon.cjs.js",
-  "module": "dist/juuust-react-icon.esm.js",
-  "typings": "dist/icons.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "taro": "dist/taro.js",
   "files": [
     "dist"
   ],
@@ -26,9 +27,11 @@
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
     "generate": "sudo rm -rf src/icons && sudo rm -rf src/taro-icons && node bin/build.js",
-    "build:bundle": "sudo rm -rf dist && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js",
     "dev": "rollup -w -c ./build/rollup.config.dev.js",
-    "build": "rollup -c ./build/rollup.config.prod.js"
+    "build": "rollup -c ./build/rollup.config.prod.js",
+    "build:bundle:react": "rollup -c ./build/rollup.config.react.bundle.js",
+    "build:bundle:taro": "rollup -c ./build/rollup.config.taro.bundle.js",
+    "build:bundle": "sudo rm -rf dist && npm run build:bundle:react && npm run build:bundle:taro"
   },
   "config": {
     "style": "fill"
