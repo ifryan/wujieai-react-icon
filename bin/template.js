@@ -41,25 +41,23 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
 const getTaroElementCode = (ComponentName, base64Image) => `
   import React from 'react';
   import { View, Text } from '@tarojs/components'
-  import Taro from '@tarojs/taro'
 
   export const ${ComponentName} = (props) => {
     const { color="currentColor", size="24", ...otherProps } = props;
-    const styles = Taro.StyleSheet.create({
-      maskedView: {
-        backgroundColor: color,
-        mask: "url('${base64Image}') 0 0/100% 100% no-repeat",
-        WebkitMask: "url('${base64Image}') 0 0/100% 100% no-repeat",
-        "-webkit-mask": "url('${base64Image}') 0 0/100% 100% no-repeat",
-        width: size,
-        height: size,
-        display: "inline-block",
-      },
-    });
+   
     return (
       <View>
         <Text
-         style={styles.maskedView} />
+          style={{
+            backgroundColor: color,
+            mask: "url('${base64Image}') 0 0/100% 100% no-repeat",
+            WebkitMask: "url('${base64Image}') 0 0/100% 100% no-repeat",
+            '-webkit-mask': "url('${base64Image}') 0 0/100% 100% no-repeat",
+            width: size,
+            height: size,
+            display: "inline-block",
+          }}
+        />
       </View>
     )
   };
