@@ -10,9 +10,18 @@ const resolveFile = function(filePath) {
 export default {
   input: ["src/icons.js", "src/taro-icons.js"],
   output: {
-    dir: pkg.distDir || "dist", // 设置输出目录，可以根据你的项目结构进行调整
+    dir: pkg.distDir || "dist",
     format: "es",
-    entryPoints: ["src/icons.js", "src/taro-icons.js"],
+    entryFileNames: "[name].js",
+    chunkFileNames: "[name]-[hash].js",
+    assetFileNames: "[name]-[hash][extname]",
+    sourcemap: true,
+    // 为不同的输入文件设置不同的库名称
+    globals: {
+      "src/icons.js": "wujieai-react-icon",
+      "src/taro-icons.js": "wujieai-taro-icon",
+    },
+    exports: "named",
   },
   external: ["react", "prop-types"],
   plugins: [
