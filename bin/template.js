@@ -47,19 +47,18 @@ const getTaroElementCode = (ComponentName, base64Image) => `
     const { color="currentColor", size=24, ...otherProps } = props;
    
     return (
-      <View>
-        <Text
-          style={{
-            backgroundColor: color,
-            mask: "url('${base64Image}') 0 0/100% 100% no-repeat",
-            WebkitMask: "url('${base64Image}') 0 0/100% 100% no-repeat",
-            '-webkit-mask': "url('${base64Image}') 0 0/100% 100% no-repeat",
-            width: Taro.pxTransform(size),
-            height: Taro.pxTransform(size),
-            display: "inline-block",
-          }}
-        />
-      </View>
+      <Text
+        {...otherProps}
+        style={{
+          backgroundColor: color,
+          mask: "url('${base64Image}') 0 0/100% 100% no-repeat",
+          WebkitMask: "url('${base64Image}') 0 0/100% 100% no-repeat",
+          '-webkit-mask': "url('${base64Image}') 0 0/100% 100% no-repeat",
+          width: Taro.pxTransform(size),
+          height: Taro.pxTransform(size),
+          display: "inline-block",
+        }}
+      />
     )
   };
 `;
