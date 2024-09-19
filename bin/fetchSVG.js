@@ -31,8 +31,7 @@ const client = Figma.Client({
 let fileId = null;
 if (!fileId) {
   try {
-    fileId = "bQ3lKO5tSmseJ87ttwyL05";
-    console.log(fileId, FIGMA_FILE_URL);
+    fileId = FIGMA_FILE_URL.match(/file\/([a-z0-9]+)\//i)[1];
   } catch (e) {
     throw Error("Cannot find FIGMA_FILE_URL key in process!");
   }
@@ -58,8 +57,8 @@ client
           key,
           file: fileId,
           description,
-          width: width,
-          height: height,
+          width,
+          height,
         };
       } else if (c.children) {
         // eslint-disable-next-line github/array-foreach
