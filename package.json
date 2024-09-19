@@ -1,6 +1,6 @@
 {
   "name": "wujieai-react-icon",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Icon automation workflow with Figma",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
