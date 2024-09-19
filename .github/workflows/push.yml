@@ -21,7 +21,7 @@ jobs:
       - name: Figma Action
         uses: primer/figma-action@v1.0.0-alpha.2
         with:
-          args: "format=svg outputDir=./src/"
+          args: "format=svg outputDir=./src/ scale=2"
         env:
           FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
