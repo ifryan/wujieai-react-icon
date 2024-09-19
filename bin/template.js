@@ -38,7 +38,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
 
 const getTaroElementCode = (ComponentName, base64Image) => `
   import React from 'react';
-  import { View, Text } from '@tarojs/components'
+  import { Text } from '@tarojs/components'
   import Taro from '@tarojs/taro'
 
   export const ${ComponentName} = (props) => {
