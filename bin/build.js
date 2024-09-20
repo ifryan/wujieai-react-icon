@@ -137,7 +137,7 @@ const generateTaroIconCode = async ({ name }) => {
   const code = fs.readFileSync(location);
   const svgCode = await processSvg(code);
   const { xmlns, width, height, viewBox } = getAttrs(names.style);
-  const base64Image = await svgToBase64(
+  const base64Image = svgToBase64(
     `<svg xmlns="${xmlns}" width="${width}" height="${height}" viewBox="${viewBox}" fill="currentColor">${svgCode}</svg>`
   );
   const ComponentName = names.componentName;

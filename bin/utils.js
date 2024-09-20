@@ -1,6 +1,5 @@
 const upperCamelCase = require("uppercamelcase");
-
-const svg2img = require("svg2img");
+const svg64 = require("svg64");
 
 const parseName = (name, defaultStyle) => {
   const nameSlices = name.split("-");
@@ -12,16 +11,8 @@ const parseName = (name, defaultStyle) => {
   };
 };
 
-const svgToBase64 = async (svgContent) => {
-  let base64Image = "";
-  await svg2img(svgContent, { format: "png" }, function(error, buffer) {
-    if (error) {
-      console.error(error);
-      return;
-    }
-    base64Image = buffer.toString("base64");
-  });
-  return `data:image/png;base64,${base64Image}`;
+const svgToBase64 = (svgContent) => {
+  return svg64.svg64(svgContent);
 };
 
 module.exports = {

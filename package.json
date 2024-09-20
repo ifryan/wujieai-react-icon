@@ -31,7 +31,8 @@
     "build": "rollup -c ./build/rollup.config.prod.js",
     "build:bundle:react": "rollup -c ./build/rollup.config.react.bundle.js",
     "build:bundle:taro": "rollup -c ./build/rollup.config.taro.bundle.js",
-    "build:bundle": "sudo rm -rf dist && npm run build:bundle:react && npm run build:bundle:taro"
+    "build:bundle": "sudo rm -rf dist && npm run build:bundle:react && npm run build:bundle:taro",
+    "version": "node bin/version.js"
   },
   "config": {
     "style": "fill"
@@ -60,6 +61,7 @@
     "got": "^11.5.1",
     "normalize.css": "^8.0.1",
     "p-queue": "2.4.2",
+    "pre-commit": "^1.2.2",
     "prettier-eslint": "^9.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -71,7 +73,7 @@
     "rollup-plugin-serve": "^1.0.3",
     "rollup-plugin-uglify": "^6.0.4",
     "styled-components": "^5.1.1",
-    "svg2img": "^1.0.0-beta.2",
+    "svg64": "^2.0.0",
     "svgo": "^1.3.0",
     "uppercamelcase": "^3.0.0"
   }
