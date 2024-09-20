@@ -1,6 +1,7 @@
 const fs = require("fs");
+const path = require("path");
 
-const packageJsonPath = require("../package.json");
+const packageJsonPath = path.join(rootDir, "package.json");
 
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
 
