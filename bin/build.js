@@ -134,11 +134,7 @@ const generateTaroIconCode = async ({ name }) => {
   const location = path.join(rootDir, "src/svg", `${names.name}.svg`);
   const destination = path.join(rootDir, "src/taro-icons", `${names.name}.js`);
   const code = fs.readFileSync(location);
-  const svgCode = await processSvg(code);
-  const { xmlns, width, height, viewBox } = getAttrs(names.style);
-  const base64Image = svgToBase64(
-    `<svg xmlns="${xmlns}" width="${width}" height="${height}" viewBox="${viewBox}" fill="currentColor">${svgCode}</svg>`
-  );
+  const base64Image = svgToBase64(code.toString());
   const ComponentName = names.componentName;
 
   const element = getTaroElementCode(`${ComponentName}`, base64Image);
