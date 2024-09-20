@@ -10,7 +10,6 @@ const { getAttrs, getElementCode, getTaroElementCode } = require("./template");
 const icons = require("../src/data.json");
 
 const rootDir = path.join(__dirname, "..");
-
 // where icons code in
 const srcDir = path.join(rootDir, "src");
 const iconsDir = path.join(rootDir, "src/react-icons");
