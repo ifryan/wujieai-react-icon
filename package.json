@@ -1,6 +1,9 @@
 {
   "name": "wujieai-react-icon",
   "version": "2.3.4",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "description": "Icon automation workflow with Figma",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

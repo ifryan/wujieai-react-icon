@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-    # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
 
@@ -11,12 +10,15 @@ jobs:
   icon_automation:
     name: figma icon automation
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: "10.x"
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
       - run: yarn install
       - name: Figma Action
         uses: primer/figma-action@v1.0.0-alpha.2
@@ -27,13 +29,12 @@ jobs:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
       - run: yarn generate
       - run: yarn build:bundle
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      - run: yarn publish
+      - run: yarn publish --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - run: yarn build
       - name: GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v1.2.5
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           build_dir: docs
         env:
